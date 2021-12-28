@@ -14,6 +14,8 @@
 #include <netinet/in.h>
 #include <netdb.h>
 #include <string.h>
+#include <time.h>
+#include <vector>
 #include <unistd.h>
 
 using namespace std;
@@ -39,13 +41,15 @@ class AnomalyDetectionHandler:public ClientHandler{
 
 // implement on Server.cpp
 class Server {
-	thread* myThread; // the thread to run the start() method in
+    thread *myThread; // my try
     int myPort;
 	// you may add data members
 public:
+    int mySocket;
 	Server(int port) throw (const char*);
 	virtual ~Server();
-	void start(ClientHandler& ch)throw(const char*);
+    //void startListening(ClientHandler &ch ,int myPort);
+    void start(ClientHandler& ch)throw(const char*);
 	void stop();
 };
 
